@@ -5,12 +5,12 @@ edition = "{{ cookiecutter.rust_edition }}"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-{% if cookiecutter.authors_name_and_email != "" %}
-authors = ["{{ cookiecutter.authors_name_and_email }}"]
-{% endif %}
-
+authors = ["{{ cookiecutter.author_full_name }} {{ cookiecutter.author_email }}"]
 {% if cookiecutter.publish_registry != "crates.io" %}
 publish = "{{ cookiecutter.publish_registry }}"
 {% endif %}
 
 [dependencies]
+{% if cookiecutter.command_line_interface == "clap" %}clap = "*"
+{% elif cookiecutter.command_line_interface == "structopt" %}structopt = "*"
+{% endif %}
