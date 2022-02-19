@@ -1,5 +1,5 @@
 [package]
-name = "{{ cookiecutter.project_slug }}"
+name = "{{ cookiecutter.project_short_name }}"
 version = "{{ cookiecutter.starting_version }}"
 edition = "{{ cookiecutter.rust_edition }}"
 
