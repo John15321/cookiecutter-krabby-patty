@@ -1,8 +1,34 @@
 {
-    "project_slug": "hello",
-    "rust_edition": "2021",
-    "starting_version": "0.1.0",
-    "directory_name": "Hello",
-    "file_name": "Howdy",
-    "greeting_recipient": "Julie"
+  "project_name": "hello_world",
+  "crate_type": [
+    "bin",
+    "lib"
+  ],
+  "rust_edition": [
+    "2021",
+    "2018"
+  ],
+  "starting_version": "0.1.0",
+  "default_git_branch": [
+    "main",
+    "master"
+  ],
+  "ci_configuration": [
+    "github-actions",
+    "gitlab",
+    "jenkins"
+  ],
+  "project_full_name": "Hello Word!",
+  "short_project_description": "Prints out Hello World!",
+  "license": [
+    "MIT",
+    "BSD-3",
+    "GNU GPL v3.0",
+    "Apache Software License 2.0"
+  ],
+  "publish_registry": "crates.io",
+  "author": {
+    "name": "",
+    "email": ""
+  }
 }
