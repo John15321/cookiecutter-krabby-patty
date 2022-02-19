@@ -18,12 +18,14 @@
     "starting_version": "0.1.0",
     "default_git_branch": [
         "main",
-        "master"
+        "master",
+        "None"
     ],
     "add_precommit_configuration": ["y", "n"],
     "ci_configuration": [
         "GitHub Actions",
         "GitLab",
-        "Jenkins"
+        "Jenkins",
+        "None"
     ]
 }

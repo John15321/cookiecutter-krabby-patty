@@ -11,6 +11,7 @@ publish = "{{ cookiecutter.publish_registry }}"
 {% endif %}
 
 [dependencies]
-{% if cookiecutter.command_line_interface == "clap" %}clap = "*"
+{% if cookiecutter.crate_type == "lib" %}
+{% elif cookiecutter.command_line_interface == "clap" %}clap = "*"
 {% elif cookiecutter.command_line_interface == "structopt" %}structopt = "*"
 {% endif %}
