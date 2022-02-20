@@ -2,4 +2,4 @@
 
 Jan Bronicki janbronicki@gmail.com
 
-Łukasz Waszczak
+Łukasz Waszczak lukwaszczak@gmail.com
