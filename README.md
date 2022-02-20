@@ -1,4 +1,3 @@
-
 # Authors
 
 Jan Bronicki
