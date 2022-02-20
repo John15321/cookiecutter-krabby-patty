@@ -2,6 +2,9 @@
 
 {{ cookiecutter.project_short_description }}
 
+
+<TABLE OF CONTENTS>
+
 ## Features
 
 * TODO

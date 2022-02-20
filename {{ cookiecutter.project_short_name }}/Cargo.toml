@@ -5,7 +5,7 @@ edition = "{{ cookiecutter.rust_edition }}"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-authors = ["{{ cookiecutter.author_full_name }} {{ cookiecutter.author_email }}"]
+authors = ["{{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>"]
 {% if cookiecutter.publish_registry != "crates.io" %}
 publish = "{{ cookiecutter.publish_registry }}"
 {% endif %}

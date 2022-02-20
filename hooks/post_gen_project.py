@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+from lib2to3.pgen2.tokenize import generate_tokens
 import os
 
 PROJECT_DIRECTORY = os.path.realpath(os.path.curdir)
@@ -48,6 +49,9 @@ def delete_all_ci_configurations():
     delete_gitlab_ci()
     delete_jenkins_ci()
 
+def generate_readme_table_of_contents():
+    pass
+
 
 if __name__ == "__main__":
     # Create basic source file in src/
@@ -76,3 +80,5 @@ if __name__ == "__main__":
     # Initialize the git repository
     if "{{ cookiecutter.default_git_branch }}" != "None":
         os.system("git init -b {{ cookiecutter.default_git_branch }}")
+        
+    generate_readme_table_of_contents()
