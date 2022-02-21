@@ -77,6 +77,7 @@ def readme_toc_update():
                     if line.startswith("## Table of Contents"):
                         fw.writelines(tr.readlines())
 
+
 def delete_all_ci_configurations():
     delete_github_ci()
     delete_gitlab_ci()
