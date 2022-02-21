@@ -24,7 +24,7 @@ def remove_file(filepath):
 
 
 def create_file(filepath, content):
-    basedir = os.path.dirname(PROJECT_DIRECTORY)
+    basedir = os.path.dirname(filepath)
     if not os.path.exists(basedir):
         os.makedirs(basedir)
     with open(filepath, "w") as f:
