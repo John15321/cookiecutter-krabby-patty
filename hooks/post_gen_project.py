@@ -42,26 +42,40 @@ def delete_gitlab_ci():
 def delete_jenkins_ci():
     pass
 
-def readme_toc_update():
-    with open("../{{ cookiecutter.project_short_name }}/README.md", "r") as fr:
-        with open("./temp.txt", "w") as tw:
-            tw.write('\n')
-            tw.write("<!TOC_START>\n\n")
-            lines = fr.readlines()
+
+def readme_toc_update() -> None:
+    """Checks and updates toc in readme.md \n
+    Creates temp.txt file to store temporary data
+
+    Returns
+    -------
+    None
+    """
+    with open("../{{ cookiecutter.project_short_name }}/README.md", "r") as file_read:
+        with open("./temp.txt", "w") as temp_write:
+            temp_write.write("\n")
+            temp_write.write("<!TOC_START>\n\n")
+            lines = file_read.readlines()
             for line in lines:
-                if line.startswith("## ") and not line.startswith("## Table of Contents"):
+                if line.startswith("## ") and not line.startswith(
+                    "## Table of Contents"
+                ):
                     text = line[3:-2]
-                    tw.write(f"* [%s](#%s)" % (text, text.lower().replace(" ", "-")))
-                    tw.write("\n\n")
+                    readme_toc_syntax = text.lower().replace(" ", "-")
+                    temp_write.write(f"* [{text}]({readme_toc_syntax})")
+                    temp_write.write("\n\n")
 
                 if line.startswith("### "):
                     text = line[4:-1]
-                    tw.write(f"  * [%s](#%s)" % (text, text.lower().replace(" ", "-")))
-                    tw.write("\n\n")
-            tw.write("<!TOC_END>")
+                    readme_toc_syntax = text.lower().replace(" ", "-")
+                    temp_write.write(f"  * [{text}]({readme_toc_syntax})")
+                    temp_write.write("\n\n")
+            temp_write.write("<!TOC_END>")
 
-        with open("../{{ cookiecutter.project_short_name }}/README.md", "a") as fw:
-            with open("./temp.txt", "r") as tr:
+        with open(
+            "../{{ cookiecutter.project_short_name }}/README.md", "a"
+        ) as file_write:
+            with open("./temp.txt", "r") as temp_read:
                 start_index = 0
                 end_index = 0
                 for num, line in enumerate(lines):
@@ -69,13 +83,13 @@ def readme_toc_update():
                         start_index = num
                     if line.startswith("<!TOC_END>"):
                         end_index = num + 1
-                fw.truncate(0)
-                fw.seek(0)
+                file_write.truncate(0)
+                file_write.seek(0)
                 for num, line in enumerate(lines):
-                    if num not in [l for l in range(start_index, end_index)]:
-                        fw.write(line)
+                    if num not in [index for index in range(start_index, end_index)]:
+                        file_write.write(line)
                     if line.startswith("## Table of Contents"):
-                        fw.writelines(tr.readlines())
+                        file_write.writelines(temp_read.readlines())
 
 
 def delete_all_ci_configurations():
