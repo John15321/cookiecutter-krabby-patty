@@ -44,7 +44,8 @@ def delete_jenkins_ci():
 
 
 def readme_toc_update() -> None:
-    """Checks and updates toc in readme.md \n
+    """Checks and updates toc in readme.md.
+
     Creates temp.txt file to store temporary data
 
     Returns
