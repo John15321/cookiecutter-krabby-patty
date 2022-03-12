@@ -1,0 +1,54 @@
+name: Rust
+
+on: [push]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  formatting:
+    name: 👔✒️Formatting and Linting
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: 👔Check Formatting
+        run: cargo fmt -- --verbose --check --color auto
+      - name: ✒️Check linting
+        run: |
+          rustup component add clippy
+          set env RUSTFLAGS="-Dwarnings"
+          cargo clippy --workspace -- -D warnings
+
+  build:
+    name: 🔨Build release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: 🔨Build release
+        run: cargo build --release
+
+  test:
+    name: 🧪Run tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: 🧪Run tests
+        run: cargo test --verbose
+
+  docs:
+    name: 📄Build docs
+    runs-on: ubuntu-latest
+    needs: [formatting, build, test]
+    steps:
+      - uses: actions/checkout@v2
+      - name: 📄Build docs
+        run: cargo doc --verbose
+
+  package:
+    name: 📦Check package generation
+    runs-on: ubuntu-latest
+    needs: [formatting, build, test]
+    steps:
+      - uses: actions/checkout@v2
+      - name: 📦Check package generation
+        run: cargo package
