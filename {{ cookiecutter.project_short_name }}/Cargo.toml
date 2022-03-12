@@ -15,3 +15,6 @@ publish = "{{ cookiecutter.publish_registry }}"
 {% elif cookiecutter.command_line_interface == "clap" %}clap = "*"
 {% elif cookiecutter.command_line_interface == "structopt" %}structopt = "*"
 {% endif %}
+
+[dev-dependencies]
+cargo-deny = "*"
