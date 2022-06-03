@@ -15,17 +15,17 @@
         "2021",
         "2018"
     ],
-    "starting_version": "0.1.0",
+    "starting_version": "0.0.1",
     "default_git_branch": [
         "main",
         "master",
         "None"
     ],
-    "add_precommit_configuration": ["y", "n"],
-    "ci_configuration": [
-        "GitHub Actions",
-        "GitLab",
-        "Jenkins",
-        "None"
-    ]
+    // "add_precommit_configuration": ["y", "n"],
+    // "ci_configuration": [
+    //     "GitHub Actions",
+    //     "GitLab",
+    //     "Jenkins",
+    //     "None"
+    // ]
 }
