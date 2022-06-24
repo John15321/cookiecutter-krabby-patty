@@ -1,31 +1,49 @@
 {
-    "author_full_name": "Jan Bronicki",
-    "author_email": "janbronicki@gmail.com",
-    "project_full_name": "Hello World",
-    "project_short_name": "{{ cookiecutter.project_full_name.lower().replace(' ', '_').replace('-', '_') }}",
-    "project_short_description": "Prints out Hello World!",
-    "open_source_license": ["MIT license", "BSD license", "ISC license", "Apache Software License 2.0", "GNU General Public License v3", "Not open source"],
-    "publish_registry": "crates.io",
-    "crate_type": [
-        "bin",
-        "lib"
-    ],
-    "command_line_interface": ["clap", "structopt", "None or Other"],
-    "rust_edition": [
-        "2021",
-        "2018"
-    ],
-    "starting_version": "0.0.1",
-    "default_git_branch": [
-        "main",
-        "master",
-        "None"
-    ],
-    // "add_precommit_configuration": ["y", "n"],
-    // "ci_configuration": [
-    //     "GitHub Actions",
-    //     "GitLab",
-    //     "Jenkins",
-    //     "None"
-    // ]
+  "author_full_name": "Jan Bronicki",
+  "author_email": "janbronicki@gmail.com",
+  "project_full_name": "Hello World",
+  "project_short_name": "{{ cookiecutter.project_full_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "project_short_description": "Prints out Hello World!",
+  "open_source_license": [
+    "MIT license",
+    "BSD license",
+    "ISC license",
+    "Apache Software License 2.0",
+    "GNU General Public License v3",
+    "Not open source"
+  ],
+  "publish_registry": "crates.io",
+  "crate_type": [
+    "bin",
+    "lib"
+  ],
+  "command_line_interface": [
+    "clap",
+    "structopt",
+    "None or Other"
+  ],
+  "rust_edition": [
+    "2021",
+    "2018"
+  ],
+  "starting_version": "0.0.1",
+  "default_git_branch": [
+    "main",
+    "master",
+    "None"
+  ],
+  [
+    "toolchain_channel": [
+      "stable",
+      "beta",
+      "nightly"
+    ]
+  ]
+  // "add_precommit_configuration": ["y", "n"],
+  // "ci_configuration": [
+  //     "GitHub Actions",
+  //     "GitLab",
+  //     "Jenkins",
+  //     "None"
+  // ]
 }
