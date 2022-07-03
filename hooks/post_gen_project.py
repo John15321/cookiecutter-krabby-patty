@@ -20,33 +20,31 @@ mod tests {
 
 
 def remove_file(filepath):
+    """Remove a file from project directory.
+
+    Parameters
+    ----------
+    filepath
+        Path to file to remove.
+    """
     os.remove(os.path.join(PROJECT_DIRECTORY, filepath))
 
 
 def create_file(filepath, content):
+    """Create a file with given content.
+
+    Parameters
+    ----------
+    filepath
+        File to create.
+    content
+        Content for the created file.
+    """
     basedir = os.path.dirname(filepath)
     if not os.path.exists(basedir):
         os.makedirs(basedir)
     with open(filepath, "w") as f:
         f.write(content)
-
-
-def delete_github_ci():
-    pass
-
-
-def delete_gitlab_ci():
-    pass
-
-
-def delete_jenkins_ci():
-    pass
-
-
-def delete_all_ci_configurations():
-    delete_github_ci()
-    delete_gitlab_ci()
-    delete_jenkins_ci()
 
 
 if __name__ == "__main__":
@@ -56,23 +54,8 @@ if __name__ == "__main__":
     elif "{{ cookiecutter.crate_type }}" == "lib":
         create_file("./src/lib.rs", LIB_RS_CONTENT)
 
-    # Delete unwanted CI/CD pipeline configurations
-    if "{{ cookiecutter.ci_configuration }}" == "GitHub Actions":
-        delete_gitlab_ci()
-        delete_jenkins_ci()
-    elif "{{ cookiecutter.ci_configuration }}" == "GitLab":
-        delete_github_ci()
-        delete_jenkins_ci()
-    elif "{{ cookiecutter.ci_configuration }}" == "Jenkins":
-        delete_github_ci()
-        delete_gitlab_ci()
-    elif "{{ cookiecutter.ci_configuration }}" == "None":
-        delete_all_ci_configurations()
-
     # If the project is not Open Source delete the LICENSE file
     if "Not open source" == "{{ cookiecutter.open_source_license }}":
         remove_file("LICENSE")
 
-    # Initialize the git repository
-    if "{{ cookiecutter.default_git_branch }}" != "None":
-        os.system("git init -b {{ cookiecutter.default_git_branch }}")
+    os.system("git init -b main")

@@ -2,19 +2,16 @@
 name = "{{ cookiecutter.project_short_name }}"
 version = "{{ cookiecutter.starting_version }}"
 edition = "{{ cookiecutter.rust_edition }}"
+description = "{{ cookiecutter.project_short_description }}"
+authors = [
+    "{{ cookiecutter.author_full_name }} {{ cookiecutter.author_email }}",
+]
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-authors = ["{{ cookiecutter.author_full_name }} {{ cookiecutter.author_email }}"]
-{% if cookiecutter.publish_registry != "crates.io" %}
-publish = "{{ cookiecutter.publish_registry }}"
-{% endif %}
 
+publish = "{{ cookiecutter.publish_registry }}"
 [dependencies]
-{% if cookiecutter.crate_type == "lib" %}
-{% elif cookiecutter.command_line_interface == "clap" %}clap = "*"
-{% elif cookiecutter.command_line_interface == "structopt" %}structopt = "*"
-{% endif %}
+
 
 [dev-dependencies]
-cargo-deny = "*"
