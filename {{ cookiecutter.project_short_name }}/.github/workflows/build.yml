@@ -1,5 +1,5 @@
+{% raw %}
 name: 🔨 Build
-
 on:
     pull_request:
     push:
@@ -34,3 +34,4 @@ jobs:
             - name: Build release
               run: cargo build --release
 
+{% endraw %}
