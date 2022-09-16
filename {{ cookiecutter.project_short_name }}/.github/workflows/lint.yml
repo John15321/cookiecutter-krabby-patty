@@ -4,25 +4,28 @@ name: 🖋  Check linting
 on:
     pull_request:
     push:
-        branches: ["main", "develop", "release"]
+        branches: ["main", "master", "develop", "release"]
 
 env:
     CARGO_TERM_COLOR: always
 
 jobs:
-    check_lint:
+    check_lint_rust:
         name: 🖋 Check linting
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
-            - uses: actions-rs/toolchain@v1
+            - uses: actions/cache@v3
               with:
-                  toolchain: stable
-                  override: true
-            - uses: davidB/rust-cargo-make@v1
+                path: |
+                    ~/.cargo/bin/
+                    ~/.cargo/registry/index/
+                    ~/.cargo/registry/cache/
+                    ~/.cargo/git/db/
+                    target/
+                key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+            - uses: actions/checkout@v2
             - name: Check linting
               run: |
                   rustup component add clippy
                   set env RUSTFLAGS="-Dwarnings"
                   cargo clippy --workspace -- -D warnings
-

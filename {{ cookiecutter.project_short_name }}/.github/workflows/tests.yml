@@ -3,7 +3,7 @@ name: 🧪 Tests
 on:
     pull_request:
     push:
-        branches: ["main", "develop", "release"]
+        branches: ["main", "master", "develop", "release"]
 
 env:
     CARGO_TERM_COLOR: always
@@ -13,7 +13,7 @@ jobs:
         strategy:
           matrix:
             os: [ubuntu-latest, windows-latest, macos-latest]
-            toolchain: [stable, beta, nightly]
+            toolchain: [stable]
         name: 🧪 Run tests
         runs-on: ${{ matrix.os }}
         steps:
@@ -22,6 +22,15 @@ jobs:
               uses: actions-rs/toolchain@v1
               with:
                 toolchain: ${{ matrix.toolchain }}
+            - uses: actions/cache@v3
+              with:
+                path: |
+                  ~/.cargo/bin/
+                  ~/.cargo/registry/index/
+                  ~/.cargo/registry/cache/
+                  ~/.cargo/git/db/
+                  target/
+                key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
             - uses: actions/checkout@v2
             - name: Run tests
               run: cargo test --verbose
