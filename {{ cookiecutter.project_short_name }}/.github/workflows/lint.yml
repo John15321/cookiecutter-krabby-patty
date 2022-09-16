@@ -1,4 +1,4 @@
-
+{% raw %}
 name: 🖋  Check linting
 
 on:
@@ -29,3 +29,4 @@ jobs:
                   rustup component add clippy
                   set env RUSTFLAGS="-Dwarnings"
                   cargo clippy --workspace -- -D warnings
+{% endraw %}

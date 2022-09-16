@@ -1,3 +1,4 @@
+{% raw %}
 name: 📦 Package
 
 on:
@@ -54,3 +55,4 @@ jobs:
             - uses: actions/checkout@v2
             - name: Publish dry run
               run: cargo publish --dry-run --verbose
+{% endraw %}

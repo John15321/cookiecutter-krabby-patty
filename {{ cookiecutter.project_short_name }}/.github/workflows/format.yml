@@ -1,3 +1,4 @@
+{% raw %}
 name: 👔 Check formatting
 
 on:
@@ -47,3 +48,4 @@ jobs:
                   override: true
             - uses: davidB/rust-cargo-make@v1
             - run: cargo make toml-fmt-check
+{% endraw %}
