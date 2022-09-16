@@ -1,3 +1,7 @@
+# cookiecutter-krabby-patty
+
+A Cookiecutter project template for Rust projects
+
 <img src="./img/krabby_patty.png"  width=25% height=25%>
 
 You need to install cookiecutter to use it:
