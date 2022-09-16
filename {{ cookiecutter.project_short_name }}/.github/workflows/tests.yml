@@ -13,7 +13,7 @@ jobs:
         strategy:
           matrix:
             os: [ubuntu-latest, windows-latest, macos-latest]
-            toolchain: [stable]
+            toolchain: [stable, beta, nightly]
         name: 🧪 Run tests
         runs-on: ${{ matrix.os }}
         steps:
