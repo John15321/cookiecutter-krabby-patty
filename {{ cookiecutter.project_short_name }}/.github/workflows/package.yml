@@ -28,10 +28,18 @@ jobs:
                   cargo install cargo-deny
                   cargo deny check
     audit:
+        name: 🐞 Dependency audit
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
-            - uses: actions-rs/audit-check@v1
+            - uses: actions-rs/toolchain@v1
+              with:
+                  toolchain: stable
+                  override: true
+            - uses: davidB/rust-cargo-make@v1
+            - name: Dependency audit
+              run: |
+                  cargo make audit
     cargo_check:
         name: 📦 Check package integrity
         runs-on: ubuntu-latest
@@ -39,7 +47,6 @@ jobs:
             - uses: actions/checkout@v2
             - name: Check package integrity
               run: cargo package --verbose
-
     publish_dry_run:
         name: 📢 Publish dry-run
         runs-on: ubuntu-latest
