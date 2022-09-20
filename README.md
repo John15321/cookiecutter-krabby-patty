@@ -19,8 +19,8 @@ This template configures:
 * CI jobs for
  * Formatting check
  * Linting check
- * Builds on `ubuntu`, `macos`, `ubuntu` each with `stable`, `beta`, `nightly`, `toolchains`
- * Tests on `ubuntu`, `macos`, `ubuntu` each with `stable`, `beta`, `nightly`, `toolchains`
+ * Builds on `ubuntu`, `macos`, `windows` each with `stable`, `beta`, `nightly`, `toolchains`
+ * Tests on `ubuntu`, `macos`, `windows` each with `stable`, `beta`, `nightly`, `toolchains`
  * Checking package integrity and pubirsh dry-run
  * `Makefile.toml` using [cargo-make](https://crates.io/crates/cargo-make)
  * Choose a license
