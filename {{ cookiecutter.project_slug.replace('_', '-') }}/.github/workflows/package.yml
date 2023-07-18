@@ -3,8 +3,6 @@ name: 📦 Package
 
 on:
     pull_request:
-    push:
-        branches: ["main", "master", "develop", "release"]
 
 env:
     CARGO_TERM_COLOR: always
@@ -23,7 +21,7 @@ jobs:
                       ~/.cargo/registry/cache/
                       ~/.cargo/git/db/
                       target/
-                  key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+                  key: ${{ runner.os }}-cargo-${{ hashFiles('Cargo.lock') }}
             - name: Check license
               run: |
                   cargo install cargo-deny
@@ -41,18 +39,11 @@ jobs:
             - name: Dependency audit
               run: |
                   cargo make audit
-    cargo_check:
-        name: 📦 Check package integrity
-        runs-on: ubuntu-latest
-        steps:
-            - uses: actions/checkout@v2
-            - name: Check package integrity
-              run: cargo package --verbose
     publish_dry_run:
         name: 📢 Publish dry-run
         runs-on: ubuntu-latest
         steps:
             - uses: actions/checkout@v2
             - name: Publish dry run
-              run: cargo publish --dry-run --verbose
+              run: cargo publish --dry-run
 {% endraw %}

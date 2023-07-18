@@ -3,8 +3,6 @@ name: 🖋  Check linting
 
 on:
     pull_request:
-    push:
-        branches: ["main", "master", "develop", "release"]
 
 env:
     CARGO_TERM_COLOR: always
@@ -14,6 +12,7 @@ jobs:
         name: 🖋 Check linting
         runs-on: ubuntu-latest
         steps:
+            - uses: actions/checkout@v2
             - uses: actions/cache@v3
               with:
                 path: |
@@ -22,8 +21,7 @@ jobs:
                     ~/.cargo/registry/cache/
                     ~/.cargo/git/db/
                     target/
-                key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-            - uses: actions/checkout@v2
+                key: ${{ runner.os }}-cargo-${{ hashFiles('Cargo.lock') }}
             - name: Check linting
               run: |
                   rustup component add clippy

@@ -1,20 +1,18 @@
 {% raw %}
-name: 🧪 Tests
+name: 🔨 Build
 on:
     pull_request:
-    push:
-        branches: ["main", "master", "develop", "release"]
 
 env:
     CARGO_TERM_COLOR: always
 
 jobs:
-    test:
+    build:
         strategy:
           matrix:
             os: [ubuntu-latest, windows-latest, macos-latest]
-            toolchain: [stable, beta, nightly]
-        name: 🧪 Run tests
+            toolchain: [stable]
+        name: 🔨 Build release
         runs-on: ${{ matrix.os }}
         steps:
             - uses: actions/checkout@v2
@@ -30,9 +28,8 @@ jobs:
                   ~/.cargo/registry/cache/
                   ~/.cargo/git/db/
                   target/
-                key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-            - uses: actions/checkout@v2
-            - name: Run tests
-              run: cargo test --verbose
+                key: ${{ runner.os }}-cargo-${{ hashFiles('Cargo.lock') }}
+            - name: Build release
+              run: cargo build --release
 
 {% endraw %}

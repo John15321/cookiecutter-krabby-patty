@@ -1,0 +1,22 @@
+{% raw %}
+name: 🚔 Pull Request Title Check
+on:
+  pull_request:
+    types:
+      - opened
+      - edited
+      - synchronize
+
+jobs:
+  check-title:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚔 Check PR title
+        run: |
+          title="${{ github.event.pull_request.title }}"
+          correct_format='^(fix|feat|docs|test|perf|ci|chore)\([^)]+\): .+'
+          if [[ ! "${title}" =~ ${correct_format} ]]; then
+            echo "Error: The PR title does not match the required format. Please update the title in the format: 'feat(ABC-123): Adds /get api response' or 'fix(MINOR): Fix typo in the CI' or 'fix(#12345): Fix memory leak'"
+            exit 1
+          fi
+{% endraw %}

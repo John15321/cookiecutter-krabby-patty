@@ -1,6 +1,8 @@
 [package]
-name = "{{ cookiecutter.project_short_name }}"
-version = "{{ cookiecutter.starting_version }}"
+name = "{{ cookiecutter.project_slug.replace('_', '-') }}"
+# Do not touc the version number
+# It will be changed dynamically by the CI
+version = "0.0.0"
 edition = "2021"
 description = "{{ cookiecutter.project_short_description }}"
 authors = ["{{ cookiecutter.author_full_name }} {{ cookiecutter.author_email }}"]
